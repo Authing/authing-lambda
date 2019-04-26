@@ -26,10 +26,9 @@ module.exports.auth = async (event, context, cb) => {
     const token = event.authorizationToken.substring(7);
 
     const authing = await new Authing({
-        clientId: '5c668c712e450b00017af455',
-        secret: 'adafbe8412cb43293f4f739a5e9ef709'
+        clientId: '5cc2a350e056c76eea71db8a',
+        secret: '91d61f8ab38feea2a61bdfa85d604954'
     });
-
 
     const result = await authing.checkLoginStatus(token);
 
