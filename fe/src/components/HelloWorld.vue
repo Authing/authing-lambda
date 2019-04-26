@@ -9,7 +9,7 @@
     </p>-->
     <h3>Open the Login Page</h3>
     <ul>
-      <li><a href="https://aws.authing.cn/oauth/oidc/auth?client_id=5cc2b548d14c742db893ba55&redirect_uri=https://authing.cn&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289" rel="noopener">Login</a></li>
+      <li><a href="https://aws.authing.cn/oauth/oidc/auth?client_id=5cc2b548d14c742db893ba55&redirect_uri=https://sample.authing.cn/aws&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289" rel="noopener">Login</a></li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
