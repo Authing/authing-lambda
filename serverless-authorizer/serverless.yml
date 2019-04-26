@@ -31,15 +31,7 @@ functions:
           method: get
           integration: lambda
           authorizer: auth # See custom authorizer docs here: http://bit.ly/2gXw9pO
-          cors:
-            origins:
-              - '*'
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
+          cors: true
 
 # package:
 #   include:

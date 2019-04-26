@@ -22,3 +22,17 @@ $ npm install serverless -g
 * `curl --header "Authorization: unauthorized" <endpoint>` - Should not work
 * `curl --header "Authorization: blabla" <endpoint>` - Should not work
 * `curl <endpoint>` - Should not work
+
+## Run front-end
+
+``` shell
+$ npm install
+$ npm run serve
+```
+
+## Build front-end
+
+``` shell
+$ npm install
+$ npm run build
+```

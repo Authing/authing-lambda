@@ -11,6 +11,17 @@
     <ul>
       <li><a href="https://aws.authing.cn/oauth/oidc/auth?client_id=5cc2b548d14c742db893ba55&redirect_uri=https://sample.authing.cn/aws&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289" rel="noopener">Login</a></li>
     </ul>
+    <h3>See the message from AWS Lambda</h3>
+    <ul>
+      <p>
+        <li>Public: <a target="_blank" href="https://gmvhw2qh1m.execute-api.us-east-1.amazonaws.com/dev/api/public">/api/public</a></li>
+        <p>{{publicMessage}}</p>
+      </p>
+      <p>
+        <li>Private: <a target="_blank" href="https://gmvhw2qh1m.execute-api.us-east-1.amazonaws.com/dev/api/private">/api/private</a></li>
+        <p>{{privateMessage}}</p>
+      </p>
+    </ul>    
     <h3>Essential Links</h3>
     <ul>
       <li><a href="https://github.com/Authing/authing-lambda" target="_blank" rel="noopener">Authing Lambda on Github</a></li>
@@ -29,23 +40,50 @@ export default {
     return {
       msg: 'Welcome to Lambda + Authing Project',
       userInfo: {},
+
+      publicMessage: '',
+      privateMessage: '',
+
+      idToken: '',
     }
   },
 
   async mounted() {
     const params = this.getHashParameters();
     const accessToken = params.access_token;
+    this.idToken = params.id_token;
+
+    this.getPublic();
+    this.getPrivate();
 
     if (accessToken) {
       await this.getUserInfo(accessToken);
     }
-
   },
 
   methods: {
     async getUserInfo(accessToken) {
       const result = await axios.get(`https://users.authing.cn/oauth/oidc/user/userinfo?access_token=${accessToken}`);
       this.userInfo = result.data;
+      this.getPrivate();
+    },
+
+    async getPublic(){
+      const result = await axios.get('https://gmvhw2qh1m.execute-api.us-east-1.amazonaws.com/dev/api/public');
+      this.publicMessage = result.data;
+    },
+
+    async getPrivate() {
+      try {
+        const result = await axios.get('https://gmvhw2qh1m.execute-api.us-east-1.amazonaws.com/dev/api/private', {
+          headers: {
+            Authorization: `Bearer ${this.idToken}`
+          }
+        });
+        this.privateMessage = result.data;
+      } catch(err) {
+        this.privateMessage = err;
+      }
     },
 
     getHashParameter(key){
