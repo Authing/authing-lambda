@@ -1,6 +1,8 @@
 service: serverless-authorizer
 
-provider: aws
+provider: 
+ name: aws
+ runtime: nodejs8.10
 
 functions:
   profile:
