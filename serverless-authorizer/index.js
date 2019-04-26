@@ -5,7 +5,7 @@ const generatePolicy = function(principalId, effect, resource) {
   authResponse.principalId = principalId;
   if (effect && resource) {
     const policyDocument = {};
-    policyDocument.Version = '2012-10-17';
+    policyDocument.Version = '2019-04-26';
     policyDocument.Statement = [];
     const statementOne = {};
     statementOne.Action = 'execute-api:Invoke';
@@ -19,8 +19,8 @@ const generatePolicy = function(principalId, effect, resource) {
 
 module.exports.profile = (event, context, callback) => {
    const body = {
-   message: 'Successs - Profile Retrieved!',
-   input: event,
+    message: 'Successs - Profile Retrieved!',
+    input: event,
    };
 
    const response = {

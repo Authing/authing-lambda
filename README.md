@@ -1,13 +1,22 @@
 # authing-lambda
 
-在 AWS Lamdba 中使用 Authing 进行认证与授权，然后获取 AWS 相关资源的访问权限。
+Using Authing in AWS Lambda.
 
-## 部署 Lambda 函数
+## Deploy lambda
 
-### 安装 serverless
+### Install serverless
 
 ``` shell
 $ npm install serverless -g
 ```
 
+## Usage
 
+* `cd serverless-authorizer`
+* `serverless deploy`
+* Notice the displayed endpoint after deployment
+* `curl --header "Authorization: allow" <endpoint>` - Should work! Authorized!
+* `curl --header "Authorization: deny" <endpoint>` - Should not work
+* `curl --header "Authorization: unauthorized" <endpoint>` - Should not work
+* `curl --header "Authorization: blabla" <endpoint>` - Should not work
+* `curl <endpoint>` - Should not work
