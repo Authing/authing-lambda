@@ -3,7 +3,6 @@ Example of a service that uses API Gateway custom authorizer feature to authoriz
 
 ## Usage
 
-* `serverless install --url https://github.com/eahefnawy/serverless-authorizer`
 * `cd serverless-authorizer`
 * `serverless deploy`
 * Notice the displayed endpoint after deployment

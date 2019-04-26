@@ -2,6 +2,8 @@
 
 Using Authing in AWS Lambda.
 
+[Live Demo](https://sample.authing.cn/aws)
+
 ## Deploy lambda
 
 ### Install serverless
@@ -10,7 +12,7 @@ Using Authing in AWS Lambda.
 $ npm install serverless -g
 ```
 
-## Usage
+## Test Lambda
 
 * `cd serverless-authorizer`
 * `serverless deploy`
