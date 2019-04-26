@@ -5,13 +5,35 @@ provider:
  runtime: nodejs8.10
 
 functions:
-  profile:
-    handler: index.profile
+  auth:
+    handler: handler.auth
+  publicEndpoint:
+    handler: handler.publicEndpoint
     events:
       - http:
-          path: profile
+          path: api/public
           method: get
-          authorizer: auth
-  auth:
-    handler: index.auth
+          integration: lambda
+          cors: true
+  privateEndpoint:
+    handler: handler.privateEndpoint
+    events:
+      - http:
+          path: api/private
+          method: get
+          integration: lambda
+          authorizer: auth # See custom authorizer docs here: http://bit.ly/2gXw9pO
+          cors:
+            origins:
+              - '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+
+# package:
+#   include:
+#     - node_modules/**
 
