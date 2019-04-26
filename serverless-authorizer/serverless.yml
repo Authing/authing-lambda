@@ -7,6 +7,14 @@ provider:
 functions:
   auth:
     handler: handler.auth
+  getUserInfo:
+    handler: handler.getUserInfo
+    events:
+      - http:
+          path: api/userInfo
+          method: get
+          integration: lambda
+          cors: true    
   publicEndpoint:
     handler: handler.publicEndpoint
     events:

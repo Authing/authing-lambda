@@ -1,5 +1,6 @@
 
 const Authing = require('authing-js-sdk');
+const axios = require('axios');
 
 // Policy helper function
 const generatePolicy = (principalId, effect, resource) => {
