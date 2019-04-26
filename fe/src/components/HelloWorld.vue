@@ -49,11 +49,12 @@ export default {
     },
 
     getHashParameter(key){
-      var params = getHashParameters();
+      var params = this.getHashParameters();
       return params[key];
     },
 
     getHashParameters(){
+      // eslint-disable-next-line
       var arr = (location.hash || "").replace(/^\#/,'').split("&");
       var params = {};
       for(var i=0; i<arr.length; i++){
