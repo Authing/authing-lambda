@@ -2,14 +2,17 @@
   <div class="hello">
     <img alt="Vue logo" height="200" :src="userInfo.picture || 'https://cdn.authing.cn/authing-logo@2.png'">
     <h1>{{ msg }}</h1>
-    <!--<p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>-->
+    <p v-if="userInfo.sub">
+      Your Authing ID is <strong>{{ userInfo.sub }}</strong>
+      <br>
+      Whole userInfo is
+      <code style="text-align:left">
+        {{ userInfo }}
+      </code>
+    </p>
     <h3>Open the Login Page</h3>
     <ul>
-      <li><a href="https://aws.authing.cn/oauth/oidc/auth?client_id=5cc2b548d14c742db893ba55&redirect_uri=https://sample.authing.cn/aws&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289" rel="noopener">Login</a></li>
+      <li><a href="https://lambda.authing.cn/oauth/oidc/auth?client_id=5cc41c06d14c740a0c93ba6f&redirect_uri=https://sample.authing.cn/aws&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289" rel="noopener">Login</a></li>
     </ul>
     <h3>See the message from AWS Lambda</h3>
     <ul>

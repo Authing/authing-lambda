@@ -25,7 +25,7 @@ module.exports.auth = async (event, context, cb) => {
     const token = event.authorizationToken.substring(7);
 
     try {
-        let decoded = jwt.verify(token, 'YOUR_OIDC_APP_SECRET'),
+        let decoded = jwt.verify(token, '02128f34e11b116a02b989967928dc77'),
           expired = (Date.parse(new Date()) / 1000) > decoded.exp
         if (expired) {
           cb('Unauthorized, Login information has expired.');
