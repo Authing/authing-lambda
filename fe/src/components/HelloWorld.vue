@@ -50,6 +50,7 @@ export default {
 
   async mounted() {
     const params = this.getHashParameters();
+    console.log(JSON.stringify(params))
     const accessToken = params.access_token;
     this.idToken = params.id_token;
 

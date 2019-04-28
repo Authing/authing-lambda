@@ -1,6 +1,4 @@
-
-const Authing = require('authing-js-sdk');
-const axios = require('axios');
+const jwt = require('jsonwebtoken');
 
 // Policy helper function
 const generatePolicy = (principalId, effect, resource) => {
@@ -26,18 +24,17 @@ module.exports.auth = async (event, context, cb) => {
     // remove "bearer " from token
     const token = event.authorizationToken.substring(7);
 
-    const authing = await new Authing({
-        clientId: '5cc2a350e056c76eea71db8a',
-        secret: '91d61f8ab38feea2a61bdfa85d604954'
-    });
-
-    const result = await authing.checkLoginStatus(token);
-
-    if(result.status) {
-        cb(null, generatePolicy('user', 'Allow', event.methodArn));
-    }else {
+    try {
+        let decoded = jwt.verify(token, 'YOUR_OIDC_APP_SECRET'),
+          expired = (Date.parse(new Date()) / 1000) > decoded.exp
+        if (expired) {
+          cb('Unauthorized, Login information has expired.');
+        }else {
+          cb(null, generatePolicy('user', 'Allow', event.methodArn));
+        }
+      } catch (error) {
         cb('Unauthorized');
-    }
+      }
   } else {
     cb('Unauthorized');
   }
