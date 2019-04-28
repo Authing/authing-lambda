@@ -1,4 +1,5 @@
 <template>
+  <!-- eslint-disable -->
   <div class="hello">
     <img alt="Vue logo" height="200" :src="userInfo.picture || 'https://cdn.authing.cn/authing-logo@2.png'">
     <h1>{{ msg }}</h1>
@@ -53,7 +54,6 @@ export default {
 
   async mounted() {
     const params = this.getHashParameters();
-    console.log(JSON.stringify(params))
     const accessToken = params.access_token;
     this.idToken = params.id_token;
 
