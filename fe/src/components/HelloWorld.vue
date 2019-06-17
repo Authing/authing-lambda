@@ -13,7 +13,7 @@
     </p>
     <h3>Open the Login Page</h3>
     <ul>
-      <li><a href="https://lambda.authing.cn/oauth/oidc/auth?client_id=5cc41c06d14c740a0c93ba6f&redirect_uri=https://sample.authing.cn/aws&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289" rel="noopener">Login</a></li>
+      <li><a href="https://lambda.authing.cn/oauth/oidc/auth?client_id=5cc41c06d14c740a0c93ba6f&redirect_uri=https://sample.authing.cn/aws&scope=openid profile&response_type=id_token token&state=jacket&nonce=1831289&protocol=oidc" rel="noopener">Login</a></li>
     </ul>
     <h3>See the message from AWS Lambda</h3>
     <ul>
